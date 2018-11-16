@@ -1,8 +1,6 @@
-using System;
-
-namespace MirageConsole
+namespace MirageBusiness
 {
-	class PythonRunner
+	public class PythonRunner
 	{
 		public static string RunWithArgument(string argument)
 		{

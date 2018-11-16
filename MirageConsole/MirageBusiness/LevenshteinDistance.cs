@@ -1,11 +1,11 @@
 using System;
 
-namespace MirageConsole
+namespace MirageBusiness
 {
 	/// <summary>
 	/// Contains approximate string matching
 	/// </summary>
-	static class LevenshteinDistance
+	public static class LevenshteinDistance
 	{
 		/// <summary>
 		/// Compute the distance between two strings.

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MirageConsole", "MirageCons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MirageUI", "MirageUI\MirageUI.csproj", "{6A7C3664-B2C8-4B41-9A58-7301C2FF5F4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MirageBusiness", "MirageBusiness\MirageBusiness.csproj", "{7029905B-E631-458B-96E2-A43801B3639E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6A7C3664-B2C8-4B41-9A58-7301C2FF5F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A7C3664-B2C8-4B41-9A58-7301C2FF5F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A7C3664-B2C8-4B41-9A58-7301C2FF5F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7029905B-E631-458B-96E2-A43801B3639E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7029905B-E631-458B-96E2-A43801B3639E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7029905B-E631-458B-96E2-A43801B3639E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7029905B-E631-458B-96E2-A43801B3639E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

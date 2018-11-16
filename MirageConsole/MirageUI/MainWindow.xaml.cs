@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using MirageBusiness;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Path = System.IO.Path;
 
 namespace MirageUI
@@ -23,6 +26,9 @@ namespace MirageUI
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private string sourcePath;
+		private string targetPath;
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -30,7 +36,8 @@ namespace MirageUI
 
 		private void btnOpenFile_Click(object sender, RoutedEventArgs e)
 		{
-			sourceFile.Text = Path.GetFileName(GetFileName());
+			sourcePath = GetFileName();
+			sourceFile.Text = Path.GetFileName(sourcePath);
 		}
 
 		private string GetFileName()
@@ -44,12 +51,19 @@ namespace MirageUI
 
 		private void btn2OpenFile_Click(object sender, RoutedEventArgs e)
 		{
-			targetFile.Text = Path.GetFileName(GetFileName());
+			targetPath = GetFileName();
+			targetFile.Text = Path.GetFileName(targetPath);
 		}
 
 		private void scoreCalculation_Click(object sender, RoutedEventArgs e)
 		{
-			throw new NotImplementedException();
+			string firstFileData = PythonRunner.RunWithArgument(sourcePath);
+			string secondFileData = PythonRunner.RunWithArgument(targetPath);
+
+			float[][] parsedFirstFileData = (JsonConvert.DeserializeObject(firstFileData) as JArray).ToObject<float[][]>();
+			float[][] parsedSecondFileData = (JsonConvert.DeserializeObject(secondFileData) as JArray).ToObject<float[][]>();
+
+			Score.Text = DataComparer.CompareFileData(parsedFirstFileData, parsedSecondFileData);
 		}
 	}
 }

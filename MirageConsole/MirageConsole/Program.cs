@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.IO;
-
+using MirageBusiness;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -41,6 +41,7 @@ namespace MirageConsole
 			string result = DataComparer.CompareFileData(parsedFirstFileData, parsedSecondFileData);
 
 			Console.WriteLine("The result is: {0}", result);
+			Console.ReadLine();
 		}
 	}
 }

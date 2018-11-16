@@ -1,11 +1,11 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace MirageConsole
+namespace MirageBusiness
 {
-	class DataComparer
+	public class DataComparer
 	{
 		private static Dictionary<int, string> notes = new Dictionary<int, string>
 		{
