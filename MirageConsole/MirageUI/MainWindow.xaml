@@ -1,0 +1,39 @@
+﻿<Window x:Class="MirageUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MirageUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="50"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+	    <TextBlock>Choose reference file</TextBlock>
+		<TextBox Grid.Column="1" Name="sourceFile"></TextBox>
+	    <Button Grid.Column="2" Name="btnOpenFile" Click="btnOpenFile_Click">Open file</Button>
+
+        <TextBlock Grid.Row="1">Choose other file</TextBlock>
+	    <TextBox Grid.Row="1" Grid.Column="1" Name="targetFile"></TextBox>
+		<Button  Grid.Row="1"  Grid.Column="2" Name="btn2OpenFile" Click="btn2OpenFile_Click">Open file</Button>
+
+		<Button Grid.Row="3" Click="scoreCalculation_Click" Margin="0,10">Calculate score</Button>
+
+		<StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal">
+			<TextBlock>Score:</TextBlock>
+			<TextBox Name="Score" Width="50" Margin="5,0"></TextBox>
+		</StackPanel>
+		
+    </Grid>
+</Window>
