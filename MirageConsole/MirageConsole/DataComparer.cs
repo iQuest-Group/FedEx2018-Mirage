@@ -38,11 +38,21 @@ namespace MirageConsole
 			StringBuilder output = new StringBuilder();
 
 			int nrColoane = fileData[0].Length;
-			for (int i = 0; i < nrColoane; i++)
+			string prevNote = string.Empty;
+			float prevSum = 0;
+			for (int i = 0; i < nrColoane; i = i + 2)
 			{
 				var toProcess = fileData.Select(d => d[i]).ToArray();
 				int maxIndex = Array.IndexOf(toProcess, toProcess.Max());
-				output.AppendFormat("{0} ", notes[maxIndex]);
+				var sum = toProcess.Sum() - 1;//) / 11;
+				var note = notes[maxIndex];
+				if (!note.Equals(prevNote) || (sum - prevSum) > 0.9)
+				{
+
+					prevNote = note;
+					output.Append($"{note} ");
+				}
+				prevSum = sum;
 			}
 
 			return output.ToString();
