@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MirageUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="825">
+        Title="Mirage" Height="650" Width="825">
     <Grid Margin="20">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
@@ -21,17 +21,17 @@
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
-	    <TextBlock>Choose reference file</TextBlock>
-		<TextBox Grid.Column="1" Name="sourceFile"></TextBox>
+	    <TextBlock>Choose reference file:</TextBlock>
+		<TextBox Grid.Column="1" Name="sourceFile" Margin="2,0"></TextBox>
 	    <Button Grid.Column="2" Name="btnOpenFile" Click="btnOpenFile_Click">Open file</Button>
 
-        <TextBlock Grid.Row="1">Choose other file</TextBlock>
-	    <TextBox Grid.Row="1" Grid.Column="1" Name="targetFile"></TextBox>
+        <TextBlock Grid.Row="1">Choose other file:</TextBlock>
+	    <TextBox Grid.Row="1" Grid.Column="1" Name="targetFile" Margin="2,0"></TextBox>
 		<Button  Grid.Row="1"  Grid.Column="2" Name="btn2OpenFile" Click="btn2OpenFile_Click">Open file</Button>
 
 		<Button Grid.Row="3" Click="scoreCalculation_Click" Margin="0,10">Calculate score</Button>
 
-		<StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal">
+		<StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0, 5">
 			<TextBlock>Score:</TextBlock>
 			<TextBox Name="Score" Width="50" Margin="5,0"></TextBox>
 			<TextBlock>%</TextBlock>
@@ -45,10 +45,10 @@
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<TextBlock Text="Original notes:"/>
-			<TextBox Grid.Row="0" Grid.Column="1" Name="sourceNotes"></TextBox>
-			<TextBlock Grid.Row="1" Grid.Column="0" Text="Attempted notes:"/>
-			<TextBox Grid.Row="1" Grid.Column="1" Name="targetNotes"></TextBox>
+			<TextBlock Text="Original notes:" Margin="0,5"/>
+			<TextBox Grid.Row="0" Grid.Column="1" Name="sourceNotes" Margin="0,5"></TextBox>
+			<TextBlock Grid.Row="1" Grid.Column="0" Text="Attempted notes:" Margin="0,5"/>
+			<TextBox Grid.Row="1" Grid.Column="1" Name="targetNotes" Margin="0,5"></TextBox>
 		</Grid>
 		
     </Grid>

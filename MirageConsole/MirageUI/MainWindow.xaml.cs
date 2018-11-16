@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -28,11 +29,16 @@ namespace MirageUI
 	{
 		private string sourcePath;
 		private string targetPath;
+		private BackgroundWorker bkWorker  = new BackgroundWorker();
 
 		public MainWindow()
 		{
 			InitializeComponent();
+			bkWorker.DoWork += BkWorkerOnDoWork;
+			bkWorker.RunWorkerCompleted += BkWorkerOnRunWorkerCompleted;
 		}
+
+		
 
 		private void btnOpenFile_Click(object sender, RoutedEventArgs e)
 		{
@@ -57,12 +63,30 @@ namespace MirageUI
 
 		private void scoreCalculation_Click(object sender, RoutedEventArgs e)
 		{
-			Score.Text = string.Empty;
-			sourceNotes.Text = string.Empty;
-			targetNotes.Text = string.Empty;
+			Score.Text = "0";
+			sourceNotes.Text = "Calculating...";
+			targetNotes.Text = "Calculating...";
+			
+			bkWorker.RunWorkerAsync();
+		}
 
+		private void BkWorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs args)
+		{
+			var tuple = args.Result as Tuple<string, string>;
+			ProcessData(tuple.Item1, tuple.Item2);
+
+		}
+
+		private void BkWorkerOnDoWork(object sender, DoWorkEventArgs doWorkEventArgs)
+		{
 			string firstFileData = PythonRunner.RunWithArgument(sourcePath);
 			string secondFileData = PythonRunner.RunWithArgument(targetPath);
+
+			doWorkEventArgs.Result = new Tuple<string, string>(firstFileData, secondFileData);
+		}
+
+		private void ProcessData(string firstFileData, string secondFileData)
+		{
 
 			float[][] parsedFirstFileData = (JsonConvert.DeserializeObject(firstFileData) as JArray).ToObject<float[][]>();
 			float[][] parsedSecondFileData = (JsonConvert.DeserializeObject(secondFileData) as JArray).ToObject<float[][]>();
@@ -71,23 +95,19 @@ namespace MirageUI
 
 			Score.Text = DataComparer.CompareFileData(parsedFirstFileData, parsedSecondFileData, out source, out target);
 
-			var s1 = source.Split(' ');
 			var sb = new StringBuilder();
-			foreach (var s in s1)
-			{
 
-				sb.AppendFormat(s.PadRight(2));
-			}
+			var sourceList = source.Split(' ').ToList();
+			sourceList.ForEach(s => sb.Append(s.PadRight(2)));
+
 			sourceNotes.Text = sb.ToString();
 
-			var s2 = target.Split(' ');
-			var sb2 = new StringBuilder();
-			foreach (var s in s2)
-			{
+			sb.Clear();
 
-				sb2.AppendFormat(s.PadRight(2));
-			}
-			targetNotes.Text = sb2.ToString();
+			var targetList = target.Split(' ').ToList();
+			targetList.ForEach(s => sb.Append(s.PadRight(2)));
+
+			targetNotes.Text = sb.ToString();
 		}
 	}
 }
