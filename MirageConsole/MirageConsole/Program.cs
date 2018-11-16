@@ -38,7 +38,9 @@ namespace MirageConsole
 			float[][] parsedFirstFileData = (JsonConvert.DeserializeObject(firstFileData) as JArray).ToObject<float[][]>();
 			float[][] parsedSecondFileData = (JsonConvert.DeserializeObject(secondFileData) as JArray).ToObject<float[][]>();
 
-			string result = DataComparer.CompareFileData(parsedFirstFileData, parsedSecondFileData);
+			string source, target;
+
+			string result = DataComparer.CompareFileData(parsedFirstFileData, parsedSecondFileData, out source, out target);
 
 			Console.WriteLine("The result is: {0}", result);
 			Console.ReadLine();

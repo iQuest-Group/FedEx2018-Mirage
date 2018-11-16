@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MirageUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="650" Width="825">
     <Grid Margin="20">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="50"/>
+			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
@@ -33,7 +34,22 @@
 		<StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal">
 			<TextBlock>Score:</TextBlock>
 			<TextBox Name="Score" Width="50" Margin="5,0"></TextBox>
+			<TextBlock>%</TextBlock>
 		</StackPanel>
+		<Grid Grid.Row="5" Grid.ColumnSpan="3">
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<TextBlock Text="Original notes:"/>
+			<TextBox Grid.Row="0" Grid.Column="1" Name="sourceNotes"></TextBox>
+			<TextBlock Grid.Row="1" Grid.Column="0" Text="Attempted notes:"/>
+			<TextBox Grid.Row="1" Grid.Column="1" Name="targetNotes"></TextBox>
+		</Grid>
 		
     </Grid>
 </Window>

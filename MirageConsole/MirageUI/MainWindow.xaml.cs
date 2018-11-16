@@ -57,13 +57,37 @@ namespace MirageUI
 
 		private void scoreCalculation_Click(object sender, RoutedEventArgs e)
 		{
+			Score.Text = string.Empty;
+			sourceNotes.Text = string.Empty;
+			targetNotes.Text = string.Empty;
+
 			string firstFileData = PythonRunner.RunWithArgument(sourcePath);
 			string secondFileData = PythonRunner.RunWithArgument(targetPath);
 
 			float[][] parsedFirstFileData = (JsonConvert.DeserializeObject(firstFileData) as JArray).ToObject<float[][]>();
 			float[][] parsedSecondFileData = (JsonConvert.DeserializeObject(secondFileData) as JArray).ToObject<float[][]>();
 
-			Score.Text = DataComparer.CompareFileData(parsedFirstFileData, parsedSecondFileData);
+			string source, target;
+
+			Score.Text = DataComparer.CompareFileData(parsedFirstFileData, parsedSecondFileData, out source, out target);
+
+			var s1 = source.Split(' ');
+			var sb = new StringBuilder();
+			foreach (var s in s1)
+			{
+
+				sb.AppendFormat(s.PadRight(2));
+			}
+			sourceNotes.Text = sb.ToString();
+
+			var s2 = target.Split(' ');
+			var sb2 = new StringBuilder();
+			foreach (var s in s2)
+			{
+
+				sb2.AppendFormat(s.PadRight(2));
+			}
+			targetNotes.Text = sb2.ToString();
 		}
 	}
 }
