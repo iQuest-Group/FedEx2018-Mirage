@@ -25,14 +25,24 @@ namespace MirageConsole
 
 		public static string CompareFileData(float[][] firstFileData, float[][] secondFileData)
 		{
+			string firstFileNotes = ExtractNotes(firstFileData);
+			string secondFileNotes = ExtractNotes(secondFileData);
+
+			int score = LevenshteinDistance.Compute(firstFileNotes, secondFileNotes);
+
+			return score.ToString();
+		}
+
+		private static string ExtractNotes(float[][] fileData)
+		{
 			StringBuilder output = new StringBuilder();
 
-			int nrColoane = firstFileData[0].Length;
+			int nrColoane = fileData[0].Length;
 			for (int i = 0; i < nrColoane; i++)
 			{
-				var toProcess = firstFileData.Select(d => d[i]).ToArray();
+				var toProcess = fileData.Select(d => d[i]).ToArray();
 				int maxIndex = Array.IndexOf(toProcess, toProcess.Max());
-				output.AppendFormat ("{0} ", notes[maxIndex]);
+				output.AppendFormat("{0} ", notes[maxIndex]);
 			}
 
 			return output.ToString();
