@@ -44,11 +44,10 @@ namespace MirageConsole
 			{
 				var toProcess = fileData.Select(d => d[i]).ToArray();
 				int maxIndex = Array.IndexOf(toProcess, toProcess.Max());
-				var sum = toProcess.Sum() - 1;//) / 11;
+				var sum = toProcess.Sum() - 1;
 				var note = notes[maxIndex];
 				if (!note.Equals(prevNote) || (sum - prevSum) > 0.9)
 				{
-
 					prevNote = note;
 					output.Append($"{note} ");
 				}
