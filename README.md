@@ -5,8 +5,8 @@ Setup
 2. pip install IPython
 3. pip install librosa
 4. pip install matplotlib
+5. build MirageConsole\MirageConsole.sln
 
 Test installation
-1. Open a command prompt in project root
-2. Build MirageConsole\MirageConsole.sln
-2. run MirageUI.exe or MirageConsole.exe
+Run either MirageUI.exe or MirageConsole.exe
+
