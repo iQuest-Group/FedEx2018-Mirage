@@ -8,4 +8,5 @@ Setup
 
 Test installation
 1. Open a command prompt in project root
-2. run MirageConsole "audio\simple_piano.wav" "audio\simple_piano.wav"
+2. Build MirageConsole\MirageConsole.sln
+2. run MirageUI.exe or MirageConsole.exe
